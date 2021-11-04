@@ -66,9 +66,8 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-
     }
-    private fun getLiveData(cityname:String){
+    private fun getLiveData(cityname: String){
         val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
         val currentDate = sdf.format(Date())
         viewModel.weather_data.observe(this, Observer { data->
@@ -78,7 +77,7 @@ class MainActivity : AppCompatActivity() {
 
                 temp.text = data.main.temp.toString()+"°C"
                 val updatedAtText = currentDate
-                updated_at.text = "Updated at: "+updatedAtText
+                updated_at.text = "Updated at: "+ currentDate
                 address.text = cityname +" , "+ data.sys.country.toString()
                 val sunrisex =data.sys.sunrise
                 sunrise.text = SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(Date(sunrisex.toLong()*1000))
